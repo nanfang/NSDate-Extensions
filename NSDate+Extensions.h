@@ -117,6 +117,9 @@
 // Returns the current date, at midnight
 - (NSDate*)midnightDate;
 
+// Get days number of the month
+- (NSInteger) monthDays;
+
 // Decomposing dates
 @property (readonly) NSInteger nearestHour;
 @property (readonly) NSInteger hour;

@@ -671,4 +671,18 @@
 - (NSString*)dateString{
     return [NSString stringWithFormat:@"%d-%02d-%02d", self.year, self.month, self.day]; 
 }
+
+- (NSInteger) monthDays{
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSRange daysRange = 
+    [currentCalendar 
+     rangeOfUnit:NSDayCalendarUnit 
+     inUnit:NSMonthCalendarUnit 
+     forDate:self];
+    
+    // daysRange.length will contain the number of the last day
+    // of the month containing curDate
+    
+    return daysRange.length;
+}
 @end
