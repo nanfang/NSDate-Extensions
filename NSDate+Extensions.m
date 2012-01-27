@@ -667,4 +667,8 @@
 - (NSDate*)midnightDate {
 	return [[NSCalendar currentCalendar] dateFromComponents:[[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self]];
 }
+
+- (NSString*)dateString{
+    return [NSString stringWithFormat:@"%d-%02d-%02d", self.year, self.month, self.day]; 
+}
 @end

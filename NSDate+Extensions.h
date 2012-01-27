@@ -102,6 +102,9 @@
 // Returns date formatted for ISO8601/ATOM: yyyy-MM-dd'T'HH:mm:ssZZZ
 - (NSString*)iso8601Formatted;
 
+// yyyy-MM-dd based on local timezone
+- (NSString*)dateString;
+
 // Checks whether current date is past date
 - (BOOL)isPastDate;
 
