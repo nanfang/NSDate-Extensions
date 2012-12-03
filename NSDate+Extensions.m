@@ -673,16 +673,36 @@
 }
 
 - (NSInteger) monthDays{
-    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSRange daysRange = 
-    [currentCalendar 
-     rangeOfUnit:NSDayCalendarUnit 
-     inUnit:NSMonthCalendarUnit 
-     forDate:self];
-    
-    // daysRange.length will contain the number of the last day
-    // of the month containing curDate
-    
-    return daysRange.length;
+    return [self numberOfDaysInMonth:self];
 }
+
+- (NSDate *)getFirstDayOfMonth {
+    NSDateComponents *firstDayOfMonth = [CURRENT_CALENDAR components:NSDayCalendarUnit | NSMonthCalendarUnit |NSYearCalendarUnit fromDate:self];
+
+    firstDayOfMonth.day = 1;
+
+    return [CURRENT_CALENDAR dateFromComponents:firstDayOfMonth];
+}
+
+- (NSDate *)getLastDayOfMonth {
+    NSDateComponents *lastDayOfMonth = [CURRENT_CALENDAR components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:self];
+    
+    lastDayOfMonth.day = [self numberOfDaysInMonth];
+    
+    return [CURRENT_CALENDAR dateFromComponents:lastDayOfMonth];
+}
+
+- (NSInteger)numberOfWeeksInMonth {
+    NSDate *firstDayInMonth = [self getFirstDayOfMonth];
+    NSDate *lastDayInMonth = [self getLastDayOfMonth];
+    NSInteger firstWeekNumber = [firstDayInMonth getWeekNumber];
+    NSInteger lastWeekNumber =[lastDayInMonth getWeekNumber];
+    
+    return lastWeekNumber - firstWeekNumber + 1;
+}
+
+- (NSInteger)getWeekNumber {
+    return [CURRENT_CALENDAR components:NSWeekOfMonthCalendarUnit fromDate:self].weekOfMonth;
+}
+
 @end
