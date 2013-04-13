@@ -120,6 +120,22 @@
 // Get days number of the month
 - (NSInteger) monthDays;
 
+// Get first day of the month.
+- (NSDate *)firstDayOfMonth;
+
+// Get last day of the month.
+- (NSDate *)lastDayOfMonth;
+
+// Get week number.
+- (NSInteger)getWeekNumber;
+
+// Get number of weeks in month.
+- (NSInteger)numberOfWeeksInMonth;
+
+// Get number of days.
+- (NSInteger)numberOfDaysInMonth;
+
+
 // Decomposing dates
 @property (readonly) NSInteger nearestHour;
 @property (readonly) NSInteger hour;
